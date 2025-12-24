@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omas Computer-Führerschein</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="step-intro" class="card active">
+            <h1>Hallo Oma! 👋</h1>
+            <p>Schön, dass du da bist. Hier ist eine kleine Übung von Lukas.</p>
+            <p>Wir machen jetzt 3 ganz kleine Aufgaben zusammen.</p>
+            <button class="btn primary" onclick="nextStep('step-1')">Los geht's!</button>
+        </div>
+
+        <div id="step-1" class="card hidden">
+            <h2>Aufgabe 1: Klicken 🖱️</h2>
+            <p>Bewege die Maus (oder den Finger) auf den grünen Knopf unten und klicke einmal darauf.</p>
+            <button class="btn success" onclick="nextStep('step-2')">Hier klicken!</button>
+        </div>
+
+        <div id="step-2" class="card hidden">
+            <h2>Aufgabe 2: Tippen ⌨️</h2>
+            <p>Wie ist dein Vorname? Bitte tippe ihn in das Feld:</p>
+            <input type="text" id="omaName" placeholder="Hier Namen eintippen..." oninput="checkInput()">
+            <br>
+            <button id="btn-name" class="btn primary disabled" onclick="saveName()" disabled>Weiter</button>
+        </div>
+
+        <div id="step-3" class="card hidden">
+            <h2>Aufgabe 3: Wissen 🧠</h2>
+            <p>Welches dieser Symbole bedeutet <strong>"Internet / WLAN"</strong>?</p>
+            <p>Klicke auf das richtige Symbol.</p>
+            
+            <div class="icon-grid">
+                <button class="icon-btn" onclick="wrongAnswer()">🔋<br>Batterie</button>
+                <button class="icon-btn" onclick="finishQuiz()">📶<br>WLAN</button>
+                <button class="icon-btn" onclick="wrongAnswer()">✂️<br>Schere</button>
+            </div>
+            <p id="error-msg" class="error hidden">Das war leider nicht richtig. Probier es nochmal!</p>
+        </div>
+
+        <div id="step-cert" class="card hidden certificate">
+            <div class="border">
+                <h1>🎉 Herzlichen Glückwunsch! 🎉</h1>
+                <p>Hiermit wird bestätigt, dass</p>
+                <h2 id="cert-name">OMA</h2>
+                <p>den Computer-Test erfolgreich bestanden hat.</p>
+                <hr>
+                <p class="small">Berechtigung:</p>
+                <p><strong>Lebenslange PC-Hilfe von Lukas</strong></p>
+                <p class="signature">Ausgestellt am: <span id="date"></span></p>
+            </div>
+            <button class="btn primary" style="margin-top: 20px;" onclick="location.reload()">Neustart</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
